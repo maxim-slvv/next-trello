@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*--------------------*/
+
+//! Цвет текста и фона:
+// --text-color: Цвет текста.
+// --background-color: Фоновый цвет.
+
+//! Цвет ссылок:
+// --link-color: Цвет обычных гиперссылок.
+// --link-hover-color: Цвет гиперссылок при наведении.
+
+//! Цвет рамок и границ:
+// --border-color: Цвет рамок и границ элементов.
+// --border-hover-color: Цвет рамок и границ при наведении.
+
+//! Цвет акцента:
+// --accent-color: Цвет акцентных элементов, таких как кнопки и выделенные элементы.
+
+//! Цвет фона для контейнеров:
+// --container-background-color: Цвет фона контейнеров (например, блоков, карточек).
+
+//! Цвет текста и фона для модальных окон и всплывающих уведомлений:
+// --modal-text-color: Цвет текста в модальных окнах и всплывающих уведомлениях.
+// --modal-background-color: Фоновый цвет модальных окон и всплывающих уведомлений.
+
+:root {
+  --header_background: rgb(31, 67, 167);
+  --header_color: rgb(0, 0, 0);
+  --body_background: white;
+  --body_color: black;
+  --link_color: white;
+}
+
+[data-theme='dark'] {
+  --header_background: rgba(1, 21, 86, 0.873);
+  --header_color: white;
+  --body_background: black;
+  --body_color: white;
+  --link_color: rgb(71, 135, 247);
+}
+
+//?--------------------------------------------------------------------------------------------
+//?--------------------------------------------------------------------------------------------
+
+//!header который будет единым для главной и для других страниц
+//!он будет абсолютен, что бы фоновое изображение под ним было видно
+
+//!Нужно хранить медиазапорсы в переменных - иначе это убьет приложение
+
+//! сделать их root?
+$ui-index-1: 1; //для наползающих элементов в общем потоке
+$ui-index-2: 2; //для наползающих элементов в общем потоке
+$ui-index-3: 3; //для масок
+$ui-index-4: 4; //для сайдбаров
+$ui-index-5: 5; //для модалок
+$ui-index-6: 6; //для элементов которые перекрывают всё
+
+//!использовать медиазапросы из переменных
+$ui-mobile: 'screen and (max-width: указать свои)';
+
+//! назаначить hover когда человек пользуется только мышкой
+$mouse-device: '(hover: hover) and (pointer: fine)';
+// &:hover {
+//   @media #{$mouse-device} {
+//     background: black;
+//   }
+// }
+
+//?--------------------------------------------------------------------------------------------
+//?--------------------------------------------------------------------------------------------
+
+* {
+  transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+html,
+body {
+  // TODO убрать если не нужно - нужно свой размер обозначить для всех экранов что бы работало
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--body_color);
+  background: var(--body_background);
+}
+
+a {
+  color: var(--link_color);
+  text-decoration: none;
+}

@@ -1,12 +1,54 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
+  font-size: 10px;
   background-color: var(--header_background);
   color: var(--header_color);
-  font-size: 50px;
-  * {
-    margin-right: 10px;
+  z-index: var(--z_index-4);
+  width: 100vw;
+  height: 48px;
+  user-select: none;
+  border-bottom: 2px solid var(--border_color);
+  & div {
+    $mouse-device: '(hover: hover) and (pointer: fine)';
+    &:hover:not(.flex) {
+      @media #{$mouse-device} {
+        transition: background 0.1s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.312);
+      }
+    }
   }
-  .active {
-    border-bottom: 1px solid white;
+  .openNav,
+  .goHome,
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .openNav {
+    padding-top: 2px;
+    width: 48px;
+  }
+  .flex {
+    flex: 1 0 auto !important;
+  }
+  .goHome {
+    width: 110px;
+    height: 100%;
+    img {
+      margin-top: -2px;
+      margin-left: 3px;
+    }
+  }
+  .profile {
+    width: 48px;
+    border: 50%;
+    overflow: hidden;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 }

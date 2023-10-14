@@ -1,0 +1,36 @@
+.dashboard {
+  .background {
+    position: relative;
+    z-index: var(--z_index-1);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    img {
+      pointer-events: none;
+    }
+  }
+  .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 48px; //!---------------Высота от HEADER
+    z-index: var(--z_index-3);
+    background-color: var(--image_background);
+    height: 100vh;
+    width: 100vw;
+    user-select: none; //TODO добавить в карточках мейби
+    display: flex;
+    & > :nth-child(1) {
+      width: 250px;
+      background-color: var(--header_background);
+    }
+    & > :nth-child(2) {
+      background-color: transparent;
+      flex: 1;
+    }
+    & > :nth-child(3) {
+      width: 250px;
+      background-color: var(--header_background);
+    }
+  }
+}

@@ -20,17 +20,14 @@
     width: 100vw;
     user-select: none; //TODO добавить в карточках мейби
     display: flex;
+
     & > :nth-child(1) {
-      width: 250px;
-      background-color: var(--header_background);
     }
     & > :nth-child(2) {
       background-color: transparent;
       flex: 1;
     }
     & > :nth-child(3) {
-      width: 250px;
-      background-color: var(--header_background);
     }
   }
 }

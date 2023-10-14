@@ -1,0 +1,29 @@
+@keyframes scaleIn {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 250px;
+  }
+}
+@keyframes scaleOut {
+  0% {
+    width: 250px;
+  }
+  100% {
+    width: 0px;
+  }
+}
+.navigation {
+  width: 250px;
+  background-color: var(--header_background);
+  overflow: hidden;
+}
+.navigation.open {
+  width: 250px;
+  animation: scaleIn 0.3s ease-in-out;
+}
+.navigation.close {
+  width: 0px;
+  animation: scaleOut 0.3s ease-in-out;
+}

@@ -21,7 +21,10 @@ const DashboardPage: NextPage = () => {
         />
         <div className={styles.box}>
           <Navigation />
-          <main className={styles.main}>Доска на выбор</main>
+          <main className={styles.main}>
+            <header style={{ background: 'gray' }}>Второй хеадер</header>
+            Доска на выбор
+          </main>
           <Aside />
         </div>
       </div>

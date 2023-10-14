@@ -1,13 +1,13 @@
 'use client';
 
 import { NextPage } from 'next';
+import { useOpen } from '@/app/store/useOpen';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 import styles from './Header.module.scss';
-import Image from 'next/image';
-import React from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 
 interface Props {}
 
@@ -17,18 +17,35 @@ const DynamicDarkMode = dynamic(() => import('../darkMode/page'), {
 });
 
 const Header: NextPage<Props> = ({}) => {
-  const pathname = usePathname();
+  const { setIsOpenNav, setIsOpenAside } = useOpen((state) => ({
+    setIsOpenNav: state.setIsOpenNav,
+    setIsOpenAside: state.setIsOpenAside,
+  }));
+
+  useEffect(() => {
+    const handleKey = (event: any) => {
+      if (event.keyCode === 219) {
+        setIsOpenNav();
+      }
+      if (event.keyCode === 221) {
+        setIsOpenAside();
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => {
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [setIsOpenNav, setIsOpenAside]);
+
   return (
     // TODO сделать наоборот отображение того что нужно только в dashboadr и того что нужно в home
     <div className={styles.header}>
-      <div className={styles.openNav}>
-        <Link href="/" className={pathname === '/' ? styles.active : ''}>
-          <Image src={'/navigation.svg'} width={30} height={48} alt="navigation" priority />
-        </Link>
+      <div className={styles.openNav} onClick={() => setIsOpenNav()}>
+        <Image src={'/navigation.svg'} width={30} height={48} alt="navigation" priority />
       </div>
       <div className={styles.flex}>
         <div className={styles.goHome}>
-          <Link href="/dashboard" className={pathname === '/dashboard' ? styles.active : ''}>
+          <Link href="/dashboard">
             <Image src={'/logo.svg'} width={110} height={48} alt="car" priority />
           </Link>
         </div>

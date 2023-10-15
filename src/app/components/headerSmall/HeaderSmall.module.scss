@@ -1,0 +1,110 @@
+.headerSmall {
+  display: flex;
+  font-size: 10px;
+  background-color: var(--header-small_background);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: var(--header_color);
+  z-index: var(--z_index-4);
+  height: 48px;
+  user-select: none;
+  border-bottom: 1px solid var(--border_color);
+  & div {
+    $mouse-device: '(hover: hover) and (pointer: fine)';
+    border: 1px solid transparent;
+    &:hover:not(.flex, .profile) {
+      @media #{$mouse-device} {
+        transition: background 0.1s ease-in-out;
+        background-color: var(--input_background);
+        border: 1px solid var(--header_border);
+      }
+    }
+  }
+
+  .flex {
+    flex: 1 0 auto;
+  }
+
+  .inputTitle,
+  .openNav,
+  .profile,
+  .favorite,
+  .visability,
+  .pallete,
+  .openAside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    cursor: pointer;
+    padding: 15px;
+    height: 30px;
+    width: 30px;
+    margin: 8px 0px 8px 8px;
+    padding: 8px 5px;
+    border-radius: 5px;
+  }
+
+  .inputTitle {
+    background-color: transparent;
+    background: transparent;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+    color: var(--body_color);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
+    transition: width 0.3s;
+    border: 1px solid transparent;
+    &::placeholder {
+      color: var(--input_placeholder);
+    }
+    &:hover {
+      $mouse-device: '(hover: hover) and (pointer: fine)';
+      @media #{$mouse-device} {
+        background-color: var(--input_background);
+        border: 1px solid var(--header_border);
+      }
+    }
+    &:focus {
+      width: 300px;
+      background-color: var(--input_background);
+      border: 1px solid var(--header_border);
+    }
+  }
+  .favorite {
+  }
+  .visability {
+  }
+  .pallete {
+  }
+
+  .profile {
+    width: fit-content;
+    margin-left: 3px;
+    margin-right: 12px;
+    img {
+      border-radius: 50%;
+      border: 1px solid var(--header_border);
+      width: 30px;
+      height: 30px;
+      margin-right: -8px;
+    }
+    img:nth-child(1) {
+      z-index: var(--z_index-1_3);
+    }
+    img:nth-child(2) {
+      z-index: var(--z_index-1_2);
+    }
+    img:nth-child(3) {
+      z-index: var(--z_index-1_1);
+    }
+  }
+  .openAside {
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+}

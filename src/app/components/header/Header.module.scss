@@ -44,9 +44,10 @@
   }
   .profile {
     width: 48px;
-    border: 50%;
     overflow: hidden;
+    cursor: pointer;
     img {
+      border-radius: 50%;
       width: 30px;
       height: 30px;
     }

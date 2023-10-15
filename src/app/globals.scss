@@ -99,19 +99,26 @@ h6 {
 // --modal-background-color: Фоновый цвет модальных окон и всплывающих уведомлений.
 
 :root {
-  --z_index-1: 1; //для наползающих элементов в общем потоке
-  --z_index-2: 2; //для наползающих элементов в общем потоке
-  --z_index-3: 3; //для масок
-  --z_index-4: 4; //для сайдбаров (header)
-  --z_index-5: 5; //для модалок
-  --z_index-6: 6; //для элементов которые перекрывают всё
-
+  --z_index-1_1: 1; //для наползающих элементов в общем потоке
+  --z_index-1_2: 2; //для наползающих элементов в общем потоке
+  --z_index-1_3: 3; //для наползающих элементов в общем потоке
+  --z_index-2: 20; //для наползающих элементов в общем потоке
+  --z_index-3: 30; //для масок
+  --z_index-4: 40; //для сайдбаров (header)
+  --z_index-5: 50; //для модалок
+  --z_index-6: 60; //для элементов которые перекрывают всё
   --mouse-device: '(hover: hover) and (pointer: fine)'; // назаначить hover когда человек пользуется только мышкой
 
-  --header_background: #004065ed;
-  --header_color: rgb(0, 0, 0);
   --body_background: white;
-  --body_color: black;
+  --header_background: hsla(218, 53%, 15%, 0.796);
+  --header_color: rgb(0, 0, 0);
+  --header-small_background: hsla(211, 18%, 68%, 0.16);
+  --header_border: rgba(216, 216, 216, 0.461);
+
+  --input_placeholder: rgba(225, 225, 225, 0.698);
+  --input_background: rgba(77, 77, 77, 0.461);
+
+  --body_color: rgb(255, 255, 255); //цвет текста
   --link_color: white;
   --border_color: hsla(211, 18%, 68%, 0.16);
 
@@ -119,9 +126,15 @@ h6 {
 }
 
 [data-theme='dark'] {
-  --header_background: #032a40ed;
-  --header_color: white;
   --body_background: black;
+  --header_background: hsla(0, 0%, 8%, 0.796);
+  --header_color: white;
+  --header-small_background: hsla(240, 2%, 8%, 0.359);
+  --header_border: rgba(149, 149, 149, 0.461);
+
+  --input_placeholder: rgba(237, 237, 237, 0.461);
+  --input_background: rgba(97, 97, 97, 0.461);
+
   --body_color: white;
   --link_color: rgb(71, 135, 247);
   --border_color: hsla(211, 18%, 68%, 0.16);

@@ -41,18 +41,18 @@ const Header: NextPage<Props> = ({}) => {
     // TODO сделать наоборот отображение того что нужно только в dashboadr и того что нужно в home
     <div className={styles.header}>
       <div className={styles.openNav} onClick={() => setIsOpenNav()}>
-        <Image src={'/navigation.svg'} width={30} height={48} alt="navigation" priority />
+        <Image src={'/header/navigation.svg'} width={30} height={48} alt="navigation" priority />
       </div>
       <div className={styles.flex}>
         <div className={styles.goHome}>
           <Link href="/dashboard">
-            <Image src={'/logo.svg'} width={110} height={48} alt="car" priority />
+            <Image src={'/header/logo.svg'} width={110} height={48} alt="car" priority />
           </Link>
         </div>
       </div>
       <DynamicDarkMode />
       <div className={styles.profile}>
-        <Image src={'/profile-empty.svg'} width={110} height={48} alt="car" priority />
+        <Image src={'/users/1.jpg'} width={110} height={48} alt="car" priority />
       </div>
     </div>
   );

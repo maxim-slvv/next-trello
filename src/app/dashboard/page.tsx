@@ -3,6 +3,7 @@ import NextImage from 'next/image';
 import styles from './DashBoard.module.scss';
 import Navigation from '../components/navigation/Navigation';
 import Aside from '../components/aside/Aside';
+import HeaderSmall from '../components/headerSmall/page';
 
 const DashboardPage: NextPage = () => {
   return (
@@ -22,7 +23,7 @@ const DashboardPage: NextPage = () => {
         <div className={styles.box}>
           <Navigation />
           <main className={styles.main}>
-            <header style={{ background: 'gray' }}>Второй хеадер</header>
+            <HeaderSmall />
             Доска на выбор
           </main>
           <Aside />

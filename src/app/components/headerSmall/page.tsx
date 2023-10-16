@@ -2,9 +2,9 @@
 
 import { NextPage } from 'next';
 import { useOpen } from '@/app/store/useOpen';
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './HeaderSmall.module.scss';
-import { useState } from 'react';
 
 interface Props {}
 
@@ -23,8 +23,7 @@ const HeaderSmall: NextPage<Props> = ({}) => {
         className={styles.inputTitle}
         //TODO через debounce отправка изменения доски
         onChange={(e) => console.log(e.target)}
-        // style={{ width: '160px' }}
-        value={'Планирование'}
+        value={'Задачи'}
         type="text"
         placeholder="Название Доски"
       />

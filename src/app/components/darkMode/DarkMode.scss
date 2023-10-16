@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   > * {
-    transform: scale(55%);
+    transform: scale(45%);
   }
   width: 70px;
   margin-top: -1px;
@@ -14,11 +14,11 @@
 }
 
 .toggle {
-  cursor: pointer;
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: 90px;
   height: 50px;
+  cursor: pointer;
   margin-left: -10px;
   background-color: #83d8ff;
   border-radius: 84px;

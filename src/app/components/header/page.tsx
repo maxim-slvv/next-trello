@@ -1,13 +1,13 @@
 'use client';
 
 import { NextPage } from 'next';
+import { useEffect } from 'react';
 import { useOpen } from '@/app/store/useOpen';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 import styles from './Header.module.scss';
-import { useEffect } from 'react';
 
 interface Props {}
 
@@ -22,6 +22,7 @@ const Header: NextPage<Props> = ({}) => {
     setIsOpenAside: state.setIsOpenAside,
   }));
 
+  const selectedTheme = localStorage.getItem('selectedTheme');
   useEffect(() => {
     const handleKey = (event: any) => {
       if (event.keyCode === 219) {
@@ -30,12 +31,15 @@ const Header: NextPage<Props> = ({}) => {
       if (event.keyCode === 221) {
         setIsOpenAside();
       }
+      if (event.keyCode === 220) {
+        console.log('свободная клавиша');
+      }
     };
     window.addEventListener('keydown', handleKey);
     return () => {
       window.removeEventListener('keydown', handleKey);
     };
-  }, [setIsOpenNav, setIsOpenAside]);
+  }, [selectedTheme, setIsOpenNav, setIsOpenAside]);
 
   return (
     // TODO сделать наоборот отображение того что нужно только в dashboadr и того что нужно в home

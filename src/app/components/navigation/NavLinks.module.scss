@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .navItems {
+    // display: flex;
+    // flex-direction: column;
+
+    .itemBox {
+      background-color: transparent;
+
+      padding: 5px 5px 0px 5px;
+      .navItem {
+        cursor: pointer;
+        //TODO: защиту от переполнения текстом
+        flex-wrap: nowrap;
+        // background-color: red;
+        padding: 10px 8.5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // background-color: green;
+        .picture {
+          margin-right: 15px;
+        }
+        .flex {
+          flex: 1;
+        }
+        .favorite {
+        }
+        $mouse-device: '(hover: hover) and (pointer: fine)';
+        border-radius: 5px;
+        border: 1px solid transparent;
+        &:hover:not(.flex, .profile) {
+          @media #{$mouse-device} {
+            transition: background 0.1s ease-in-out;
+            background-color: var(--input_background);
+            border: 1px solid var(--header_border);
+          }
+        }
+      }
+    }
+  }
+}

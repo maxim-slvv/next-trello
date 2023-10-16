@@ -1,16 +1,18 @@
 import { NextPage } from 'next';
 import NextImage from 'next/image';
-import styles from './DashBoard.module.scss';
+
 import Navigation from '../components/navigation/Navigation';
 import Aside from '../components/aside/Aside';
-import HeaderSmall from '../components/headerSmall/page';
+import Board from '../components/board/Board';
+
+import styles from './DashBoard.module.scss';
 
 const DashboardPage: NextPage = () => {
   return (
     <section className={styles.dashboard}>
       <div className={styles.background}>
         <NextImage
-          src={'/bg/1.jpg'}
+          src={'/bg/2.jpg'}
           sizes="100vw"
           fill
           quality={100}
@@ -22,10 +24,7 @@ const DashboardPage: NextPage = () => {
         />
         <div className={styles.box}>
           <Navigation />
-          <main className={styles.main}>
-            <HeaderSmall />
-            Доска на выбор
-          </main>
+          <Board />
           <Aside />
         </div>
       </div>

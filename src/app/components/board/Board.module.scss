@@ -1,0 +1,11 @@
+.board {
+  .container {
+    padding: 5px;
+    .box {
+      .provider {
+        display: flex;
+        background-color: rgb(2, 2, 2);
+      }
+    }
+  }
+}

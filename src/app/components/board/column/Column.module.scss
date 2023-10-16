@@ -1,0 +1,11 @@
+.columnBox {
+  border: 5px solid rgba(5, 192, 99, 0.418);
+  display: flex;
+
+  .itemTodo {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    padding: 15px;
+  }
+}

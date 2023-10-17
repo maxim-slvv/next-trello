@@ -26,15 +26,10 @@ const TodoCard: NextPage<Props> = ({
 }) => {
   return (
     <div className={styles.item} {...draggableProps} {...dragHandleProps} ref={innerRef}>
-      TODO CARD
-      <h1>название {todo.title}</h1>
-      <p>статус {todo.status}</p>
-      <p>создано {todo.$createdAt}</p>
-      <p>id {todo.$id}</p>
       {todo.image && (
         <NextImage
           src={(todo.image as unknown as { url: string }).url}
-          width={180}
+          width={255}
           height={80}
           quality={100}
           style={{
@@ -44,6 +39,10 @@ const TodoCard: NextPage<Props> = ({
           priority
         />
       )}
+      <h1>{todo.title}</h1>
+      {/* <p>статус {todo.status}</p> */}
+      <p>создано {todo.$createdAt}</p>
+      {/* <p>id {todo.$id}</p> */}
     </div>
   );
 };

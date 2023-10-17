@@ -6,6 +6,7 @@ import Aside from '../components/aside/Aside';
 import Board from '../components/board/Board';
 
 import styles from './DashBoard.module.scss';
+import Modal from '../components/modal/Modal';
 
 const DashboardPage: NextPage = () => {
   return (

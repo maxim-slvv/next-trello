@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import Loader from '../components/loader/Loader';
+
 import Header from '../components/header/page';
+import Modal from '../components/modal/Modal';
 
 //!рендеринг на стороне клиента - у нас там будет фотка и имя из google авторизации
 //TODO Опущу еще ниже, что бы рендерился он на сервере а именно данные профиля уже на клиенте
@@ -19,6 +20,8 @@ const DynamicHeader = dynamic(() => import('../components/header/page'), {
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <section>
+      {/* //TODO MODAL сделать */}
+      {/* <Modal /> */}
       {/* //TODO поскольку я хочу рендерить на стороне сервака данные */}
       {/* //TODO то тогда надо чекать тему на сайте из хранилища и менять ее по ходу дела*/}
       <Header />

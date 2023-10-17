@@ -4,6 +4,7 @@ import { useBoard } from '@/app/store/useBoard';
 import TodoCard from '../todoCard/TodoCard';
 
 import styles from './Column.module.scss';
+import { useOpen } from '@/app/store/useOpen';
 
 interface Props {
   id: TypedColumn;
@@ -21,34 +22,38 @@ const idToColumnText: {
 };
 
 const Column: NextPage<Props> = ({ id, todos, index }: Props) => {
-  const { searchString } = useBoard((state) => ({
-    searchString: state.searchString,
-  }));
+  const searchString = useBoard((state) => state.searchString);
+  const setIsOpen = useOpen((state) => state.setIsOpenModal);
 
   return (
     <div className={styles.columnBox}>
       <Draggable draggableId={id} index={index}>
         {(provided) => (
           <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+            <div className={styles.columnTitle}>
+              <h2>{idToColumnText[id]}</h2>
+              <span>
+                {!searchString
+                  ? todos.length
+                  : todos.filter((todo) =>
+                      todo.title.toLowerCase().includes(searchString.toLowerCase()),
+                    ).length}
+              </span>
+            </div>
             <Droppable droppableId={index.toString()} type="card">
               {(provided, snapshot) => (
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className={styles.items}
+                  className={styles.itemsBox}
                   style={
-                    snapshot.isDraggingOver ? { background: 'green' } : { background: 'blue' }
+                    snapshot.isDraggingOver
+                      ? //TODo привязаться к темной теме из localstorage
+                        { background: 'black' }
+                      : { background: 'black' }
+                    //   { background: '#15171acb' }
+                    // : { background: '#15171a' }
                   }>
-                  <h2>
-                    {idToColumnText[id]}
-                    <span>
-                      {!searchString
-                        ? todos.length
-                        : todos.filter((todo) =>
-                            todo.title.toLowerCase().includes(searchString.toLowerCase()),
-                          ).length}
-                    </span>
-                  </h2>
                   <div className={styles.items}>
                     {todos.map((todo, index) => {
                       if (
@@ -76,7 +81,9 @@ const Column: NextPage<Props> = ({ id, todos, index }: Props) => {
                     })}
                     {provided.placeholder}
                     <div>
-                      <button>Иконка Plus</button>
+                      <button className={styles.button} onClick={() => setIsOpen(true)}>
+                        Добавить задачу
+                      </button>
                     </div>
                   </div>
                 </div>

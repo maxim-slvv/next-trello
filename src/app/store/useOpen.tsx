@@ -5,6 +5,8 @@ export type IUseOpen = {
   setIsOpenNav: () => any;
   isOpenAside: 'none' | 'open' | 'close';
   setIsOpenAside: () => any;
+  isOpenModal: boolean;
+  setIsOpenModal: (value: boolean) => any;
 };
 
 export const useOpen = create<IUseOpen>()((set, get) => ({
@@ -17,5 +19,9 @@ export const useOpen = create<IUseOpen>()((set, get) => ({
   setIsOpenAside: () => {
     const newState = get().isOpenAside === 'open' ? 'close' : 'open';
     set({ isOpenAside: newState });
+  },
+  isOpenModal: true,
+  setIsOpenModal: (value) => {
+    set({ isOpenModal: value });
   },
 }));

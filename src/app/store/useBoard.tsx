@@ -4,7 +4,11 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 interface IUseBoard {
   serverData: Todo[];
   board: Board;
+  searchString: string;
+  setSearchString: (searchString: string) => void;
   fetchBoard: () => void;
+  setBoardState: (board: Board) => void;
+  updateBoard: (todo: Todo, columnId: TypedColumn) => void;
 }
 
 export const useBoard = create<IUseBoard>()(
@@ -13,13 +17,17 @@ export const useBoard = create<IUseBoard>()(
       board: {
         columns: new Map<TypedColumn, Column>(),
       },
+      searchString: '',
+      setSearchString: (searchString) => {
+        set({ searchString: searchString });
+      },
       serverData: [
         {
           $id: '1',
           $createdAt: '2023-10-16',
           title: 'Задача 1',
           status: 'todo',
-          image: '{"url": "http://example.com/image1.jpg"}',
+          image: '{"url": "/bg/1.jpg"}',
         },
         {
           $id: '2',
@@ -32,7 +40,7 @@ export const useBoard = create<IUseBoard>()(
           $createdAt: '2023-10-16',
           title: 'Задача 3',
           status: 'done',
-          image: '{"url": "http://example.com/image.jpg"}',
+          image: '{"url": "/bg/2.jpg"}',
         },
       ],
       fetchBoard: async () => {
@@ -65,20 +73,30 @@ export const useBoard = create<IUseBoard>()(
             ...(todo.image && { image: JSON.parse(todo.image) }),
           });
         }
-        // //*получаем заполненные колонки или просто пустые
-        // console.log(columns);
         //*Сортировка колонок по columnTypes - что бы по порядку были
         const sortedColumns = new Map(
           Array.from(columns.entries()).sort(
             (a, b) => columnTypes.indexOf(a[0]) - columnTypes.indexOf(b[0]),
           ),
         );
-
         const board: Board = {
           columns: sortedColumns,
         };
         console.log(board);
         set({ board: board });
+      },
+      setBoardState: (board) => set({ board }),
+      updateBoard: (todo, columnId) => {
+        const newData = get().serverData.map((todoInArr) => {
+          if (todo.$id === todoInArr.$id) {
+            return {
+              ...todoInArr,
+              status: columnId,
+            };
+          }
+          return todoInArr;
+        });
+        set({ serverData: newData });
       },
     }),
     {

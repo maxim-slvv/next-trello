@@ -5,15 +5,21 @@ import { useOpen } from '@/app/store/useOpen';
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from './HeaderSmall.module.scss';
+import { useBoard } from '@/app/store/useBoard';
 
 interface Props {}
 
 const HeaderSmall: NextPage<Props> = ({}) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [boardName, setBoardName] = useState<string>();
 
   const { isOpenAside, setIsOpenAside } = useOpen((state) => ({
     isOpenAside: state.isOpenAside,
     setIsOpenAside: state.setIsOpenAside,
+  }));
+  const { searchString, setSearchString } = useBoard((state) => ({
+    searchString: state.searchString,
+    setSearchString: state.setSearchString,
   }));
 
   return (
@@ -22,11 +28,12 @@ const HeaderSmall: NextPage<Props> = ({}) => {
       <input
         className={styles.inputTitle}
         //TODO через debounce отправка изменения доски
-        onChange={(e) => console.log(e.target)}
-        value={'Задачи'}
+        onChange={(e) => setBoardName(e.target.value)}
+        value={boardName}
         type="text"
         placeholder="Название Доски"
       />
+
       <div className={styles.favorite} onClick={() => setIsFavorite((prev) => !prev)}>
         <Image
           src={isFavorite ? '/header/favorite-selected.svg' : '/header/favorite.svg'}
@@ -40,6 +47,14 @@ const HeaderSmall: NextPage<Props> = ({}) => {
         <Image src={'/header/visability.svg'} width={20} height={20} alt="visability" priority />
       </div>
       <div className={styles.flex}></div>
+      <input
+        className={styles.inputTitle}
+        //TODO через debounce отправка изменения доски
+        onChange={(e) => setSearchString(e.target.value)}
+        value={searchString}
+        type="text"
+        placeholder="Поиск"
+      />
       <div className={styles.pallete}>
         <Image src={'/header/pallete.svg'} width={20} height={20} alt="pallete" priority />
       </div>

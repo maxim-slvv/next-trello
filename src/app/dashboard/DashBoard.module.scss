@@ -1,4 +1,5 @@
 .dashboard {
+  overflow-y: hidden;
   .background {
     position: relative;
     z-index: var(--z_index-1);

@@ -22,7 +22,6 @@ const Header: NextPage<Props> = ({}) => {
     setIsOpenAside: state.setIsOpenAside,
   }));
 
-  const selectedTheme = localStorage.getItem('selectedTheme');
   useEffect(() => {
     const handleKey = (event: any) => {
       if (event.keyCode === 219) {
@@ -39,7 +38,7 @@ const Header: NextPage<Props> = ({}) => {
     return () => {
       window.removeEventListener('keydown', handleKey);
     };
-  }, [selectedTheme, setIsOpenNav, setIsOpenAside]);
+  }, [setIsOpenNav, setIsOpenAside]);
 
   return (
     // TODO сделать наоборот отображение того что нужно только в dashboadr и того что нужно в home

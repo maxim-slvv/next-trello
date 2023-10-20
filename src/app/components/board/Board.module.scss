@@ -1,11 +1,21 @@
 .board {
+  overflow: auto;
+  overflow-y: hidden;
+  & > header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    flex: 0 0 auto;
+    overflow: hidden;
+  }
   .container {
     padding: 12px;
-
+    height: 100vw;
     .box {
+      display: contents;
       //TODO: максимальную высоту
-
       .provider {
+        height: 100%;
         display: flex;
       }
     }

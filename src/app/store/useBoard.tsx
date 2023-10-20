@@ -118,7 +118,7 @@ export const useBoard = create<IUseBoard>()(
         const board: Board = {
           columns: sortedColumns,
         };
-        console.log(board);
+        // console.log(board);
         set({ board: board });
       },
       setBoardState: (board) => set({ board }),

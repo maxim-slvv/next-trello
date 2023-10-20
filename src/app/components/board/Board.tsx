@@ -26,8 +26,6 @@ const Board: NextPage = () => {
   }, []);
 
   const getOnClick = () => {
-    console.log(board);
-    console.log(board.columns.size);
     setIsOpen(true);
   };
 

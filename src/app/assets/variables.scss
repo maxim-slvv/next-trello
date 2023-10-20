@@ -1,0 +1,13 @@
+//TODO: Перенести сюда все для темной темы?
+
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$largeDesktop: 1200px;
+
+$mediaQueries: (
+  mobile: 'only screen and (max-width: #{$mobile})',
+  tablet: 'only screen and (min-width: #{$tablet}) and (max-width: #{$desktop})',
+  desktop: 'only screen and (min-width: #{$desktop})',
+  largeDesktop: 'only screen and (min-width: #{$largeDesktop})',
+);

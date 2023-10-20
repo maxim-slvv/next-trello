@@ -1,31 +1,50 @@
 @keyframes scaleIn {
   0% {
     width: 52px;
+    flex: 0 0 52px;
+    @media (max-width: 576px) {
+      width: 0px;
+      flex: 0 0 0px;
+    }
   }
   100% {
     width: 250px;
+    flex: 0 0 250px;
   }
 }
 @keyframes scaleOut {
   0% {
     width: 250px;
+    flex: 0 0 250px;
   }
   100% {
-    width: 52px;
+    // width: 52px;    //! почему то без этих свойств работает плавно
+    // flex: 0 0 52px;    //! почему то без этих свойств работает плавно
+    @media (max-width: 576px) {
+      width: 0px;
+      flex: 0 0 0px;
+    }
   }
 }
 .navigation {
-  border-right: 1px solid var(--border_color);
   height: 100vh;
   width: 250px;
+  flex: 0 0 250px;
+  border-right: 1px solid var(--border_color);
   background-color: var(--header_background);
   overflow: hidden;
 }
 .navigation.open {
   width: 250px;
+  flex: 0 0 250px;
   animation: scaleIn 0.3s ease-in-out;
 }
 .navigation.close {
   width: 52px;
+  flex: 0 0 52px;
   animation: scaleOut 0.3s ease-in-out;
+  @media (max-width: 576px) {
+    width: 0px;
+    flex: 0 0 0px;
+  }
 }

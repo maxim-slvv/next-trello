@@ -5,7 +5,7 @@ import TodoCard from '../todoCard/TodoCard';
 
 import styles from './Column.module.scss';
 import { useOpen } from '@/app/store/useOpen';
-import ButtonAdd from '../../buttonAdd/buttonAdd';
+import ButtonAdd from '../../buttonAdd/ButtonAdd';
 
 interface Props {
   id: TypedColumn;

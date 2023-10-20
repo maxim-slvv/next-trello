@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { useBoard } from '@/app/store/useBoard';
 import NavList from './NavList';
-import ButtonAdd from '../buttonAdd/buttonAdd';
+import ButtonAdd from '../buttonAdd/ButtonAdd';
 
 import styles from './Navigation.module.scss';
 

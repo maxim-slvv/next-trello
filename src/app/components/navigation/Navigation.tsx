@@ -3,14 +3,14 @@ import { NextPage } from 'next';
 import { useEffect } from 'react';
 import { useOpen } from '@/app/store/useOpen';
 import { useMediaQuery } from 'react-responsive';
-import type { INavItem } from './NavLinks';
-import NavLinks from './NavLinks';
+
+import { useBoard } from '@/app/store/useBoard';
+import NavList from './NavList';
+import ButtonAdd from '../buttonAdd/buttonAdd';
 
 import styles from './Navigation.module.scss';
 
-interface Props {}
-
-const Navigation: NextPage<Props> = ({}) => {
+const Navigation: NextPage = () => {
   const isTablet = useMediaQuery({ maxWidth: 768 });
 
   const { isOpen, setHandIsOpenNav } = useOpen((state) => ({
@@ -26,11 +26,8 @@ const Navigation: NextPage<Props> = ({}) => {
     }
   }, [isTablet, setHandIsOpenNav]);
 
-  const navArray: INavItem[] = [
-    { id: '1', label: 'Задачи', href: '/dashboard/1', picture: '/bg/1.jpg', isFavorite: true },
-    { id: '2', label: 'Цели', href: '/dashboard/2', picture: '/bg/2.jpg', isFavorite: false },
-    { id: '3', label: 'Планы', href: '/dashboard/3', picture: '/bg/3.jpg', isFavorite: true },
-  ];
+  const { serverData } = useBoard((state) => ({ serverData: state.serverData }));
+  const { boards } = serverData;
 
   return (
     <div
@@ -41,8 +38,11 @@ const Navigation: NextPage<Props> = ({}) => {
           ? `${styles.navigation} ${styles.open}`
           : `${styles.navigation} ${styles.close}`
       }>
-      {/* Мои доски + */}
-      <NavLinks navArray={navArray} />
+      <NavList boards={boards} />
+      {boards.length === 0 && <div className={styles.emptyInfo}>у вас еще нету досок {`:)`}</div>}
+      <div className={styles.buttonAdd}>
+        <ButtonAdd title="Добавить Доску" />
+      </div>
     </div>
   );
 };

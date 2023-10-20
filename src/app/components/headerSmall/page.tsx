@@ -2,7 +2,7 @@
 
 import { NextPage } from 'next';
 import { useOpen } from '@/app/store/useOpen';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBoard } from '@/app/store/useBoard';
 import { useMediaQuery } from 'react-responsive';
 import Image from 'next/image';
@@ -13,7 +13,14 @@ interface Props {}
 
 const HeaderSmall: NextPage<Props> = ({}) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
-  const [boardTitle, setBoardTitle] = useState<string>('');
+
+  const { selectedBoard, serverData, setBoardName } = useBoard((state) => ({
+    selectedBoard: state.selectedBoard,
+    serverData: state.serverData,
+    setBoardName: state.setBoardName,
+  }));
+
+  const boardName = serverData.boards[selectedBoard].name;
 
   const isHeaderSquezze = useMediaQuery({ maxWidth: 1024 });
 
@@ -33,7 +40,7 @@ const HeaderSmall: NextPage<Props> = ({}) => {
 
   const inputTitleStyle = {
     // Настройка ширины на основе количества символов
-    width: `${boardTitle.length * 12}px`,
+    width: `${boardName.length * 12}px`,
     minWidth: `165px`,
     maxWidth: `200px`,
   };
@@ -50,8 +57,8 @@ const HeaderSmall: NextPage<Props> = ({}) => {
       <input
         className={styles.inputTitle}
         //TODO через debounce отправка изменения доски
-        onChange={(e) => setBoardTitle(e.target.value)}
-        value={boardTitle}
+        onChange={(e) => setBoardName(e.target.value)}
+        value={boardName}
         style={inputTitleStyle}
         type="text"
         placeholder="Название Доски"

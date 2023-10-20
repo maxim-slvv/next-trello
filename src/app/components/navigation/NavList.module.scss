@@ -3,23 +3,17 @@
   flex-direction: column;
 
   .navItems {
-    // display: flex;
-    // flex-direction: column;
-
     .itemBox {
       background-color: transparent;
-
       padding: 5px 5px 0px 5px;
       .navItem {
         cursor: pointer;
         //TODO: защиту от переполнения текстом
         flex-wrap: nowrap;
-        // background-color: red;
-        padding: 10px 8.5px;
+        padding: 5px 9.5px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        // background-color: green;
         .picture {
           margin-right: 15px;
         }
@@ -27,6 +21,12 @@
           flex: 1;
         }
         .favorite {
+          border: 1px solid transparent;
+          border-radius: 5px;
+          padding: 4px;
+          &:hover {
+            border: 1px solid var(--header_border);
+          }
         }
         $mouse-device: '(hover: hover) and (pointer: fine)';
         border-radius: 5px;

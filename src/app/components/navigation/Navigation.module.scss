@@ -18,8 +18,8 @@
     flex: 0 0 250px;
   }
   100% {
-    // width: 52px;    //! почему то без этих свойств работает плавно
-    // flex: 0 0 52px;    //! почему то без этих свойств работает плавно
+    // width: 52px; //! почему то без этих свойств работает плавно
+    // flex: 0 0 52px; //! почему то без этих свойств работает плавно
     @media (max-width: 576px) {
       width: 0px;
       flex: 0 0 0px;
@@ -33,6 +33,19 @@
   border-right: 1px solid var(--border_color);
   background-color: var(--header_background);
   overflow: hidden;
+  .emptyInfo {
+  }
+  .buttonAdd {
+    width: 239px;
+    margin: 5px 5px;
+    & > button {
+      background-color: transparent;
+    }
+    & > button:hover {
+      background-color: var(--input_background);
+      border: 1px solid var(--header_border);
+    }
+  }
 }
 .navigation.open {
   width: 250px;

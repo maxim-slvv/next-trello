@@ -11,20 +11,23 @@ import Column from './column/Column';
 import styles from './Board.module.scss';
 
 const Board: NextPage = () => {
-  const { board, fetchBoard, serverData, setBoardState, updateBoard } = useBoard((state) => ({
-    board: state.board,
-    fetchBoard: state.fetchBoard,
-    serverData: state.serverData,
-    setBoardState: state.setBoardState,
-    updateBoard: state.updateBoard,
-  }));
+  const { selectedBoard, board, fetchBoard, serverData, setBoardState, updateBoard } = useBoard(
+    (state) => ({
+      selectedBoard: state.selectedBoard,
+      board: state.board,
+      fetchBoard: state.fetchBoard,
+      serverData: state.serverData,
+      setBoardState: state.setBoardState,
+      updateBoard: state.updateBoard,
+    }),
+  );
 
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
     fetchBoard();
     setIsReady(true);
-  }, []);
+  }, [selectedBoard]);
 
   const handleOnDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
@@ -94,7 +97,7 @@ const Board: NextPage = () => {
       <HeaderSmall />
       <div className={styles.container}>
         <div className={styles.box}>
-          {isReady ? (
+          {isReady && typeof board.columns === 'object' && board.columns instanceof Map ? (
             <DragDropContext onDragEnd={handleOnDragEnd}>
               <Droppable droppableId="board" direction="horizontal" type="column">
                 {(provided) => (

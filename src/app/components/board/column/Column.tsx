@@ -5,6 +5,7 @@ import TodoCard from '../todoCard/TodoCard';
 
 import styles from './Column.module.scss';
 import { useOpen } from '@/app/store/useOpen';
+import ButtonAdd from '../../buttonAdd/buttonAdd';
 
 interface Props {
   id: TypedColumn;
@@ -85,10 +86,9 @@ const Column: NextPage<Props> = ({ id, todos, index }: Props) => {
                   </div>
                 )}
               </Droppable>
-
-              <button className={styles.button} onClick={() => setIsOpen(true)}>
-                Добавить задачу
-              </button>
+              <div className={styles.button} onClick={() => setIsOpen(true)}>
+                <ButtonAdd title="Добавить задачу" />
+              </div>
             </div>
           )}
         </Draggable>

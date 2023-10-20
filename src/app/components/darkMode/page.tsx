@@ -6,18 +6,18 @@ import './DarkMode.scss';
 const DarkMode: NextPage = () => {
   const setDarkMode = () => {
     document.querySelector('body')?.setAttribute('data-theme', 'dark');
-    localStorage.setItem('selectedTheme', 'dark');
+    //!+++++++++++++++++++++++++++++++++++++++++ localStorage.setItem('selectedTheme', 'dark');
   };
   const setLightMode = () => {
     document.querySelector('body')?.setAttribute('data-theme', 'light');
-    localStorage.setItem('selectedTheme', 'light');
+    //!+++++++++++++++++++++++++++++++++++++++++ localStorage.setItem('selectedTheme', 'light');
   };
 
-  const selectedTheme = localStorage.getItem('selectedTheme');
+  //!+++++++++++++++++++++++++++++++++++++++++ const selectedTheme = localStorage.getItem('selectedTheme');
 
-  if (selectedTheme === 'dark') {
-    setDarkMode();
-  }
+  //!+++++++++++++++++++++++++++++++++++++++++ if (selectedTheme === 'dark') {
+  //!+++++++++++++++++++++++++++++++++++++++++   setDarkMode();
+  //!+++++++++++++++++++++++++++++++++++++++++ }
 
   const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.checked ? setDarkMode() : setLightMode();
@@ -29,7 +29,7 @@ const DarkMode: NextPage = () => {
         className="dn"
         id="dn"
         onChange={toggleTheme}
-        defaultChecked={selectedTheme === 'dark'}
+        //!+++++++++++++++++++++++++++++++++++++++++ defaultChecked={selectedTheme === 'dark'}
       />
       <label htmlFor="dn" className="toggle">
         <span className="toggle__handler">

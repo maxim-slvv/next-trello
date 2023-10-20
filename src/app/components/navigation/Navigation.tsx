@@ -1,26 +1,30 @@
 'use client';
 import { NextPage } from 'next';
+import { useEffect } from 'react';
 import { useOpen } from '@/app/store/useOpen';
 import { useMediaQuery } from 'react-responsive';
 import type { INavItem } from './NavLinks';
 import NavLinks from './NavLinks';
 
 import styles from './Navigation.module.scss';
-import { useEffect } from 'react';
 
 interface Props {}
 
 const Navigation: NextPage<Props> = ({}) => {
   const isTablet = useMediaQuery({ maxWidth: 768 });
 
-  const { isOpen, setIsOpen } = useOpen((state) => ({
+  const { isOpen, setHandIsOpenNav } = useOpen((state) => ({
     isOpen: state.isOpenNav,
-    setIsOpen: state.setIsOpenNav,
+    setHandIsOpenNav: state.setHandIsOpenNav,
   }));
 
   useEffect(() => {
-    setIsOpen();
-  }, [isTablet, setIsOpen]);
+    if (!isTablet) {
+      setHandIsOpenNav('close');
+    } else {
+      setHandIsOpenNav('open');
+    }
+  }, [isTablet, setHandIsOpenNav]);
 
   const navArray: INavItem[] = [
     { id: '1', label: 'Задачи', href: '/dashboard/1', picture: '/bg/1.jpg', isFavorite: true },

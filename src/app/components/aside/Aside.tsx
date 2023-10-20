@@ -4,14 +4,27 @@ import { NextPage } from 'next';
 import { useOpen } from '@/app/store/useOpen';
 import Image from 'next/image';
 import styles from './Aside.module.scss';
+import { useMediaQuery } from 'react-responsive';
+import { useEffect } from 'react';
 
 interface Props {}
 
 const Aside: NextPage<Props> = ({}) => {
-  const { isOpen, setIsOpenAside } = useOpen((state) => ({
+  const isTablet = useMediaQuery({ maxWidth: 768 });
+
+  const { isOpen, toggleOpenAside, setHandIsOpenAside } = useOpen((state) => ({
     isOpen: state.isOpenAside,
-    setIsOpenAside: state.setIsOpenAside,
+    toggleOpenAside: state.toggleOpenAside,
+    setHandIsOpenAside: state.setHandIsOpenAside,
   }));
+
+  useEffect(() => {
+    if (!isTablet) {
+      setHandIsOpenAside('close');
+    } else {
+      setHandIsOpenAside('open');
+    }
+  }, [isTablet, setHandIsOpenAside]);
 
   return (
     <div
@@ -28,7 +41,7 @@ const Aside: NextPage<Props> = ({}) => {
             Информация
             <div
               className={styles.closeIcon}
-              onClick={() => setIsOpenAside()}
+              onClick={() => toggleOpenAside()}
               style={
                 isOpen === 'close' || isOpen === 'none'
                   ? { opacity: '1', transition: 'ease-in-out' }

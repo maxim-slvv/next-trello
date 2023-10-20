@@ -17,15 +17,15 @@ const DynamicDarkMode = dynamic(() => import('../darkMode/page'), {
 });
 
 const Header: NextPage<Props> = ({}) => {
-  const { setIsOpenNav, setIsOpenAside } = useOpen((state) => ({
-    setIsOpenNav: state.setIsOpenNav,
+  const { toggleOpenNav, setIsOpenAside } = useOpen((state) => ({
+    toggleOpenNav: state.toggleOpenNav,
     setIsOpenAside: state.setIsOpenAside,
   }));
 
   useEffect(() => {
     const handleKey = (event: any) => {
       if (event.keyCode === 219) {
-        setIsOpenNav();
+        toggleOpenNav();
       }
       if (event.keyCode === 221) {
         setIsOpenAside();
@@ -38,12 +38,12 @@ const Header: NextPage<Props> = ({}) => {
     return () => {
       window.removeEventListener('keydown', handleKey);
     };
-  }, [setIsOpenNav, setIsOpenAside]);
+  }, [toggleOpenNav, setIsOpenAside]);
 
   return (
     // TODO сделать наоборот отображение того что нужно только в dashboadr и того что нужно в home
     <div className={styles.header}>
-      <div className={styles.openNav} onClick={() => setIsOpenNav()}>
+      <div className={styles.openNav} onClick={() => toggleOpenNav()}>
         <Image src={'/header/navigation.svg'} width={30} height={48} alt="navigation" priority />
       </div>
       <div className={styles.flex}>

@@ -19,15 +19,12 @@ const Board: NextPage = () => {
     updateBoard: state.updateBoard,
   }));
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
     fetchBoard();
+    setIsReady(true);
   }, []);
-
-  const getOnClick = () => {
-    setIsOpen(true);
-  };
 
   const handleOnDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
@@ -93,11 +90,11 @@ const Board: NextPage = () => {
   };
 
   return (
-    <section className={styles.board} onClick={() => getOnClick()}>
+    <section className={styles.board}>
       <HeaderSmall />
       <div className={styles.container}>
         <div className={styles.box}>
-          {isOpen ? (
+          {isReady ? (
             <DragDropContext onDragEnd={handleOnDragEnd}>
               <Droppable droppableId="board" direction="horizontal" type="column">
                 {(provided) => (

@@ -13,7 +13,7 @@ const DashboardPage: NextPage = () => {
     <section className={styles.dashboard}>
       <div className={styles.background}>
         <NextImage
-          src={'/bg/2.jpg'}
+          src={'/bg/1.jpg'}
           sizes="100vw"
           fill
           quality={100}

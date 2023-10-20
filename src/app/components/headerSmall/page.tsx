@@ -17,9 +17,9 @@ const HeaderSmall: NextPage<Props> = ({}) => {
 
   const isHeaderSquezze = useMediaQuery({ maxWidth: 1024 });
 
-  const { isOpenAside, setIsOpenAside } = useOpen((state) => ({
+  const { isOpenAside, toggleOpenAside } = useOpen((state) => ({
     isOpenAside: state.isOpenAside,
-    setIsOpenAside: state.setIsOpenAside,
+    toggleOpenAside: state.toggleOpenAside,
   }));
   const { searchString, setSearchString } = useBoard((state) => ({
     searchString: state.searchString,
@@ -138,7 +138,7 @@ const HeaderSmall: NextPage<Props> = ({}) => {
           </>
         )}
         {isOpenAside === 'open' && (
-          <div className={styles.openAside} onClick={() => setIsOpenAside()}>
+          <div className={styles.openAside} onClick={() => toggleOpenAside()}>
             <Image
               src={'/header/dots-aside.svg'}
               width={20}

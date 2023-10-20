@@ -17,9 +17,9 @@ const DynamicDarkMode = dynamic(() => import('../darkMode/page'), {
 });
 
 const Header: NextPage<Props> = ({}) => {
-  const { toggleOpenNav, setIsOpenAside } = useOpen((state) => ({
+  const { toggleOpenNav, toggleOpenAside } = useOpen((state) => ({
     toggleOpenNav: state.toggleOpenNav,
-    setIsOpenAside: state.setIsOpenAside,
+    toggleOpenAside: state.toggleOpenAside,
   }));
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Header: NextPage<Props> = ({}) => {
         toggleOpenNav();
       }
       if (event.keyCode === 221) {
-        setIsOpenAside();
+        toggleOpenAside();
       }
       if (event.keyCode === 220) {
         console.log('свободная клавиша');
@@ -38,7 +38,7 @@ const Header: NextPage<Props> = ({}) => {
     return () => {
       window.removeEventListener('keydown', handleKey);
     };
-  }, [toggleOpenNav, setIsOpenAside]);
+  }, [toggleOpenNav, toggleOpenAside]);
 
   return (
     // TODO сделать наоборот отображение того что нужно только в dashboadr и того что нужно в home

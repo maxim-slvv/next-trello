@@ -19,7 +19,7 @@ const DynamicHeader = dynamic(() => import('../components/header/page'), {
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section>
+    <section style={{ overflow: 'hidden', height: '100%' }}>
       {/* //TODO MODAL сделать */}
       {/* <Modal /> */}
       {/* //TODO поскольку я хочу рендерить на стороне сервака данные */}
